@@ -1,0 +1,43 @@
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    def __init__(self, name):
+        self.name = name
+
+    @abstractmethod
+    def start(self):
+        pass
+
+
+class Car(Vehicle):
+    def __init__(self, name, fuel):
+        super().__init__(name)
+        self.__fuel = fuel
+
+    def start(self):
+        print(f"{self.name} starts with a key 🔑")
+
+    def show_fuel(self):
+        print(f"Fuel level: {self.__fuel}")
+
+
+class Bike(Vehicle):
+    def start(self):
+        print(f"{self.name} starts with a self button 🏍️")
+
+
+class Truck(Vehicle):
+    def start(self):
+        print(f"{self.name} starts with heavy ignition 🚛")
+
+
+v1 = Car("BMW", 50)
+v2 = Bike("Yamaha")
+v3 = Truck("Tata Truck")
+
+vehicles = [v1, v2, v3]
+
+for v in vehicles:
+    v.start()
+
+v1.show_fuel()
